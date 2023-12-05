@@ -20,20 +20,26 @@ use CodeIgniter\Model;
  */
 class IncidentModel extends Model
 {
+    // Database table
     protected $table = 'incidents';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'object';
+
+    // Soft deletes
     protected $useSoftDeletes = true;
 
+    // Fields
     protected $allowedFields = ['title', 'description', 'location', 'date', 'status', 'reported_by'];
 
+    // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
+    // Validation
     protected $validationRules = [
         'title' => 'required|min_length[3]|max_length[255]',
         'description' => 'required|min_length[30]',
@@ -88,10 +94,10 @@ class IncidentModel extends Model
     }
 
     /**
-     * @param array $options
-     * @return array
+     * @param int $id
+     * @return object
      */
-    public function getById($id)
+    public function getById(int $id)
     {
         $result = $this->select('incidents.*, users.username AS user')
             ->join('users', 'incidents.reported_by = users.id', 'inner')
@@ -100,8 +106,8 @@ class IncidentModel extends Model
     }
 
     /**
-     * @param array $options
-     * @return array
+     * @param array $data
+     * @return mixed
      */
     public function newIncident($data)
     {

@@ -79,6 +79,12 @@ class AuthGroups extends ShieldAuthGroups
         'users.edit'          => 'Can edit existing non-admin users',
         'users.delete'        => 'Can delete existing non-admin users',
         'beta.access'         => 'Can access beta-level features',
+        // Incidents permissions
+        'incidents.show'    => 'Can see all incidents',
+        'incidents.create'    => 'Can create incidents',
+        'incidents.edit'      => 'Can edit incidents',
+        'incidents.delete'    => 'Can delete incidents',
+        'incidents.admin'   => 'Can access to all incidents, not only created by the user',
     ];
 
     /**
@@ -94,6 +100,8 @@ class AuthGroups extends ShieldAuthGroups
             'admin.*',
             'users.*',
             'beta.*',
+            // superadmins can access all incidents
+            'incidents.*'
         ],
         'admin' => [
             'admin.access',
@@ -101,6 +109,8 @@ class AuthGroups extends ShieldAuthGroups
             'users.edit',
             'users.delete',
             'beta.access',
+            // admins can access all incidents
+            'incidents.*'
         ],
         'developer' => [
             'admin.access',
@@ -109,7 +119,13 @@ class AuthGroups extends ShieldAuthGroups
             'users.edit',
             'beta.access',
         ],
-        'user' => [],
+        'user' => [
+            // users can access only incidents created by them
+            'incidents.show',
+            'incidents.create',
+            'incidents.edit',
+            'incidents.delete',
+        ],
         'beta' => [
             'beta.access',
         ],

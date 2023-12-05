@@ -10,7 +10,9 @@ $routes->get('/', 'IncidentsController::index');
 service('auth')->routes($routes);
 
 
-
+/**
+ * IncidentsController routes
+ */
 $routes->group('incidents', static function ($routes) {
     $routes->get('', 'IncidentsController::index', ['as' => 'incidents.index']);
     $routes->get('detail/(:num)', 'IncidentsController::detail/$1', ['as' => 'incidents.detail']);
