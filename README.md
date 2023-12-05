@@ -1,6 +1,6 @@
-# CodeIgniter 4 Application Starter
+# Prueba Técnica CodeIgniter 4 
 
-## What is CodeIgniter?
+## tecnología utilizada
 
 TODO:
 
